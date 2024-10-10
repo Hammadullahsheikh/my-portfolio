@@ -6,9 +6,9 @@ const Layout = () => {
   return (
     <div>
       <Navbar/>
-      <main className="container mx-auto p-4">
-        <Outlet />
-      </main>
+      
+       <Outlet />
+      
     </div>
   );
 };

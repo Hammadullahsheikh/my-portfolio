@@ -1,69 +1,93 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaUser, FaFolderOpen, FaBriefcase, FaEnvelope } from 'react-icons/fa';
 
 const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const links = [
-    { name: 'Home', icon: <FaHome /> },
-    { name: 'About', icon: <FaUser /> },
-    { name: 'Projects', icon: <FaFolderOpen /> },
-    { name: 'Experience', icon: <FaBriefcase /> },
-    { name: 'Contact', icon: <FaEnvelope /> },
+    { name: 'Home', icon: <FaHome />, path: '/' },
+    { name: 'About', icon: <FaUser />, path: '/about' },
+    { name: 'Projects', icon: <FaFolderOpen />, path: '/projects' },
+    { name: 'Experience', icon: <FaBriefcase />, path: '/experience' },
+    { name: 'Contact', icon: <FaEnvelope />, path: '/contact' },
   ];
 
   const handleLinkClick = () => {
     setIsOpen(false); // Close the menu when a link is clicked
   };
 
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  // Close the menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <nav className="relative bg-white shadow-lg">
-      <div className="container px-6 py-4 mx-auto flex justify-between items-center">
-        <Link className='text-2xl font-bold text-yellow-500' to="/" aria-label="Home">
-          <button className="px-4 py-2 bg-yellow-500 text-white rounded-full transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg">
-            Hammad Ullah
-          </button>
+    <nav className="bg-yellow-100 relative shadow-lg">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        <Link
+          to="/"
+          className="text-2xl font-bold text-yellow-500 transition-all duration-300 hover:scale-110"
+        >
+          Hammad Ullah
         </Link>
 
+        {/* Mobile Toggle Button */}
         <div className="flex lg:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            type="button"
-            aria-label="Toggle menu"
-            className="text-yellow-500 hover:text-yellow-600 focus:outline-none"
-            aria-expanded={isOpen}
-          >
-            {!isOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            )}
+          <button onClick={toggleMenu} className="text-yellow-500">
+            {isOpen ? 'Close' : 'Menu'}
           </button>
         </div>
 
-        <div className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-yellow-100 rounded-lg shadow-md ${isOpen ? 'translate-x-0 opacity-100' : 'opacity-0 -translate-x-full'} md:mt-0 md:p-0 md:top-0 md:relative md:bg-white md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center`}>
-          <div className="flex flex-col md:flex-row md:mx-6">
-            {links.map(({ name, icon }) => (
+        {/* Desktop Links */}
+        <div className="hidden lg:flex space-x-4 relative">
+          {links.map(({ name, icon, path }) => (
+            <div key={name} className="group relative">
               <Link
-                key={name}
-                to={name.toLowerCase()}
+                to={path}
                 onClick={handleLinkClick}
-                className={`flex items-center my-2 p-2 transition-transform duration-300 transform hover:scale-105 hover:bg-yellow-200 rounded-md ${location.pathname === `/${name.toLowerCase()}` ? 'text-yellow-600 font-bold' : 'text-yellow-500'} md:mx-4 md:my-0`}
-                aria-label={name}
+                className={`flex items-center p-2 border-2 border-transparent transition-all duration-300 rounded-md ${location.pathname === path ? 'text-yellow-600 font-bold' : 'text-yellow-500'} hover:border-yellow-600 hover:bg-transparent hover:shadow-2xl hover:rounded-md`}
               >
                 <span className="mr-2">{icon}</span>
                 {name}
               </Link>
-            ))}
-          </div>
+              <span className={`absolute left-0 bottom-0 h-1 w-0 bg-yellow-600 transition-all duration-300 group-hover:w-full`} />
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Mobile Links */}
+      {isOpen && (
+        <div ref={menuRef} className="flex flex-col items-center lg:hidden">
+          {links.map(({ name, icon, path }) => (
+            <Link
+              key={name}
+              to={path}
+              onClick={handleLinkClick}
+              className={`flex items-center my-2 p-2 border-2 border-transparent transition-all duration-300 rounded-md ${location.pathname === path ? 'text-yellow-600 font-bold' : 'text-yellow-500'} hover:border-yellow-600 hover:bg-transparent hover:shadow-2xl hover:rounded-md`}
+            >
+              <span className="mr-2">{icon}</span>
+              {name}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };

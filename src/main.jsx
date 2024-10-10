@@ -2,11 +2,12 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Layout';
-import Home from './pages/Home';
+
 import About from './pages/About';
 import Projects from './pages/Projects.jsx';
 import Experience from './pages/Experience.jsx';
 import Contact from './pages/Contact.jsx';
+import Home from './pages/Home.jsx';
 
 
 
