@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaUser, FaFolderOpen, FaBriefcase, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaUser, FaFolderOpen, FaBriefcase, FaEnvelope, FaGithub } from 'react-icons/fa';
 
 const Navbar = () => {
   const location = useLocation();
@@ -10,7 +10,6 @@ const Navbar = () => {
   const links = [
     { name: 'Home', icon: <FaHome />, path: '/' },
     { name: 'About', icon: <FaUser />, path: '/about' },
-    { name: 'Projects', icon: <FaFolderOpen />, path: '/projects' },
     { name: 'Experience', icon: <FaBriefcase />, path: '/experience' },
     { name: 'Contact', icon: <FaEnvelope />, path: '/contact' },
   ];
@@ -20,7 +19,11 @@ const Navbar = () => {
   };
 
   const toggleMenu = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen(true); // Always set it to open on toggle button
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false); // Close the menu on close button
   };
 
   // Close the menu when clicking outside
@@ -38,8 +41,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-yellow-100 relative shadow-lg">
-      <div className="container mx-auto flex justify-between items-center p-4">
+    <nav className="bg-yellow-100 fixed top-0 left-0 w-full shadow-lg z-50">
+      <div className="container mx-auto flex items-center justify-between p-4">
+        {/* Brand Name on the Left */}
         <Link
           to="/"
           className="text-2xl font-bold text-yellow-500 transition-all duration-300 hover:scale-110"
@@ -48,14 +52,14 @@ const Navbar = () => {
         </Link>
 
         {/* Mobile Toggle Button */}
-        <div className="flex lg:hidden">
-          <button onClick={toggleMenu} className="text-yellow-500">
+        <div className="flex lg:hidden ml-auto">
+          <button onClick={isOpen ? closeMenu : toggleMenu} className="text-yellow-500">
             {isOpen ? 'Close' : 'Menu'}
           </button>
         </div>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex space-x-4 relative">
+        {/* Desktop Links Centered */}
+        <div className="hidden lg:flex space-x-4 mx-auto">
           {links.map(({ name, icon, path }) => (
             <div key={name} className="group relative">
               <Link
@@ -69,6 +73,27 @@ const Navbar = () => {
               <span className={`absolute left-0 bottom-0 h-1 w-0 bg-yellow-600 transition-all duration-300 group-hover:w-full`} />
             </div>
           ))}
+        </div>
+
+        {/* Projects and GitHub Links on the Right */}
+        <div className="hidden lg:flex ml-auto space-x-4">
+          <Link
+            to="/projects"
+            onClick={handleLinkClick}
+            className="flex items-center p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+          >
+            <FaFolderOpen className="mr-2" />
+            Projects
+          </Link>
+          <Link
+            to="https://github.com/yourusername" // Update with your GitHub username
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+          >
+            <FaGithub className="mr-2" />
+            GitHub
+          </Link>
         </div>
       </div>
 
@@ -86,6 +111,26 @@ const Navbar = () => {
               {name}
             </Link>
           ))}
+          {/* Projects Link in Mobile Menu */}
+          <Link
+            to="/projects"
+            onClick={handleLinkClick}
+            className={`flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg`}
+          >
+            <FaFolderOpen className="mr-2" />
+            Projects
+          </Link>
+          {/* GitHub Link in Mobile Menu */}
+          <Link
+            to="https://github.com/yourusername" // Update with your GitHub username
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleLinkClick}
+            className={`flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg`}
+          >
+            <FaGithub className="mr-2" />
+            GitHub
+          </Link>
         </div>
       )}
     </nav>

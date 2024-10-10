@@ -2,8 +2,8 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="max-w-4xl bg-white rounded-lg shadow-lg p-8">
+    <div className="min-h-screen mt-10 bg-gray-100 flex items-center justify-center">
+      <div className="max-w-4xl mt-10 bg-white rounded-lg shadow-lg p-8">
         <h1 className="text-4xl font-bold text-yellow-500 mb-4">About Me</h1>
         <p className="text-lg mb-4">
           Hello! I'm Hammad Ullah, a passionate web developer with a love for creating beautiful and functional web applications. I specialize in front-end development using modern JavaScript frameworks and libraries, particularly React.
