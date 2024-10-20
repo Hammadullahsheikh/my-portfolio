@@ -1,35 +1,57 @@
 import React from 'react';
+import { IoLogoHtml5 } from "react-icons/io5";
+import { FaCss3Alt, FaBootstrap, FaReact } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
+import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
+import { BiLogoTypescript } from "react-icons/bi";
 
 const About = () => {
   return (
-    <div className="min-h-screen mt-10 bg-gray-100 flex items-center justify-center">
-      <div className="max-w-4xl mt-10 bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-4xl font-bold text-yellow-500 mb-4">About Me</h1>
-        <p className="text-lg mb-4">
-          Hello! I'm Hammad Ullah, a passionate web developer with a love for creating beautiful and functional web applications. I specialize in front-end development using modern JavaScript frameworks and libraries, particularly React.
-        </p>
-        <p className="text-lg mb-4">
-          With a strong foundation in HTML, CSS, and JavaScript, I enjoy transforming design ideas into interactive experiences. I thrive on solving problems and continuously seek to expand my skill set to stay current with the latest industry trends.
-        </p>
-        <p className="text-lg mb-4">
-          When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.
-        </p>
-        <h2 className="text-2xl font-bold text-yellow-500 mt-8 mb-4">My Skills</h2>
-        <ul className="list-disc list-inside mb-4">
-          <li>HTML & CSS</li>
-          <li>JavaScript (ES6+)</li>
-          <li>React.js</li>
-          <li>Node.js</li>
-          <li>Responsive Web Design</li>
-          <li>Version Control (Git)</li>
-        </ul>
-        <h2 className="text-2xl font-bold text-yellow-500 mt-8 mb-4">Get in Touch</h2>
-        <p className="text-lg">
-          Feel free to reach out if you'd like to connect or collaborate on a project! You can find my contact details on the <a href="/contact" className="text-yellow-500 underline">Contact</a> page.
-        </p>
+    <div className=' py-32'>
+      <div className='flex text-yellow-400 flex-col items-center md:flex-row justify-center  py-16 md:py-20'>
+        <div className='md:text-left mb-8 md:mb-0 md:mr-8'>
+          <p className='font-semibold text-5xl px-3'>Know Who <span className='text-yellow-600'>I'M</span></p>
+          <br />
+          <p className='text-2xl font-medium px-3'>
+            Hi Everyone, I am <span className='text-yellow-600'>Hammad Ullah</span> from <span className='text-yellow-600'>Karachi, Pakistan.</span> <br />
+            I am studying web development at SMIT.
+          </p>
+        </div>
+        
+        <div>
+        <img 
+                        src= "/images/tl.webp"
+                        alt="Profile of Hammad Ullah" 
+                        className="w-full h-full object-cover" 
+                        
+                    />
+        </div>
+      </div>
+
+      <p className='font-semibold text-5xl text-center text-yellow-600 flex-wrap'>Web Development <span className='text-yellow-400'>Skills</span> </p>
+      <div className='flex justify-center'>
+        <div className='flex flex-wrap justify-center gap-4 mx-8 my-8'>
+          {[
+            { icon: <IoLogoHtml5 className='text-8xl text-yellow-400'/>, key: 'HTML' },
+            { icon: <FaCss3Alt className='text-8xl text-yellow-400'/>, key: 'CSS' },
+            { icon: <IoLogoJavascript className='text-8xl text-yellow-400'/>, key: 'JavaScript' },
+            { icon: <FaBootstrap className='text-8xl text-yellow-400'/>, key: 'Bootstrap' },
+            { icon: <RiTailwindCssFill className='text-8xl text-yellow-400'/>, key: 'Tailwind' },
+            { icon: <BiLogoTypescript className='text-8xl text-yellow-400'/>, key: 'TypeScript' },
+            { icon: <FaReact className='text-8xl text-yellow-400'/>, key: 'React' },
+            { icon: <RiNextjsFill className='text-8xl text-yellow-400'/>, key: 'Next.js' },
+          ].map(({ icon, key }) => (
+            <div
+              key={key}
+              className='transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-yellow-400 py-5 px-8 rounded-md w-[calc(50%-8px)] md:w-[calc(25%-16px)] flex justify-center items-center'
+            >
+              {icon}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default About;

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaUser, FaFolderOpen, FaBriefcase, FaEnvelope, FaGithub } from 'react-icons/fa';
+import { RxResume } from 'react-icons/rx';
 
 const Navbar = () => {
   const location = useLocation();
@@ -15,18 +16,13 @@ const Navbar = () => {
   ];
 
   const handleLinkClick = () => {
-    setIsOpen(false); // Close the menu when a link is clicked
+    setIsOpen(false);
   };
 
   const toggleMenu = () => {
-    setIsOpen(true); // Always set it to open on toggle button
+    setIsOpen((prev) => !prev);
   };
 
-  const closeMenu = () => {
-    setIsOpen(false); // Close the menu on close button
-  };
-
-  // Close the menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -40,56 +36,65 @@ const Navbar = () => {
     };
   }, []);
 
+  const renderLinks = () => (
+    links.map(({ name, icon, path }) => (
+      <Link
+        key={name}
+        to={path}
+        onClick={handleLinkClick}
+        className={`flex items-center my-2 p-2 border-b-2 border-transparent transition-all duration-300 rounded-md ${location.pathname === path ? 'text-white font-bold border-white' : 'text-gray-300 hover:border-white hover:bg-gray-700'}`}
+      >
+        <span className="mr-2">{icon}</span>
+        {name}
+      </Link>
+    ))
+  );
+
   return (
-    <nav className="bg-yellow-100 fixed top-0 left-0 w-full shadow-lg z-50">
+    <nav className="bg-gray-800 fixed top-0 left-0 w-full shadow-lg z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
-        {/* Brand Name on the Left */}
         <Link
           to="/"
-          className="text-2xl font-bold text-yellow-500 transition-all duration-300 hover:scale-110"
+          className="text-2xl font-bold text-yellow-400 transition-all duration-300 hover:scale-110"
         >
           Hammad Ullah
         </Link>
 
-        {/* Mobile Toggle Button */}
         <div className="flex lg:hidden ml-auto">
-          <button onClick={isOpen ? closeMenu : toggleMenu} className="text-yellow-500">
+          <button
+            onClick={toggleMenu}
+            className="text-gray-300"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          >
             {isOpen ? 'Close' : 'Menu'}
           </button>
         </div>
 
-        {/* Desktop Links Centered */}
-        <div className="hidden lg:flex space-x-4 mx-auto">
-          {links.map(({ name, icon, path }) => (
-            <div key={name} className="group relative">
-              <Link
-                to={path}
-                onClick={handleLinkClick}
-                className={`flex items-center p-2 border-2 border-transparent transition-all duration-300 rounded-md ${location.pathname === path ? 'text-yellow-600 font-bold' : 'text-yellow-500'} hover:border-yellow-600 hover:bg-transparent hover:shadow-2xl hover:rounded-md`}
-              >
-                <span className="mr-2">{icon}</span>
-                {name}
-              </Link>
-              <span className={`absolute left-0 bottom-0 h-1 w-0 bg-yellow-600 transition-all duration-300 group-hover:w-full`} />
-            </div>
-          ))}
-        </div>
-
-        {/* Projects and GitHub Links on the Right */}
-        <div className="hidden lg:flex ml-auto space-x-4">
+        <div className="hidden lg:flex space-x-4 ml-auto">
+          {renderLinks()}
           <Link
             to="/projects"
             onClick={handleLinkClick}
-            className="flex items-center p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+            className={`flex items-center my-2 p-2 border-b-2 border-transparent transition-all duration-300 rounded-md ${location.pathname === '/projects' ? 'text-white font-bold border-white' : 'text-gray-300 hover:border-white hover:bg-gray-700'}`}
           >
             <FaFolderOpen className="mr-2" />
             Projects
           </Link>
+          <a
+            className="flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+            href="/images/hammad_ullah_cv.pdf" // Ensure the path is correct
+            onClick={handleLinkClick}
+            download="Hammad_Ullah_Resume.pdf" // Sets the filename for the download
+          >
+            <RxResume className="mr-2" />
+            Resume
+          </a>
           <Link
-            to="https://github.com/yourusername" // Update with your GitHub username
+            to="https://github.com/Hammadullahsheikh" // Update with your GitHub username
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+            className="flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
           >
             <FaGithub className="mr-2" />
             GitHub
@@ -97,36 +102,32 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Links */}
       {isOpen && (
-        <div ref={menuRef} className="flex flex-col items-center lg:hidden">
-          {links.map(({ name, icon, path }) => (
-            <Link
-              key={name}
-              to={path}
-              onClick={handleLinkClick}
-              className={`flex items-center my-2 p-2 border-2 border-transparent transition-all duration-300 rounded-md ${location.pathname === path ? 'text-yellow-600 font-bold' : 'text-yellow-500'} hover:border-yellow-600 hover:bg-transparent hover:shadow-2xl hover:rounded-md`}
-            >
-              <span className="mr-2">{icon}</span>
-              {name}
-            </Link>
-          ))}
-          {/* Projects Link in Mobile Menu */}
+        <div ref={menuRef} className="flex flex-col items-center lg:hidden bg-gray-800">
+          {renderLinks()}
           <Link
             to="/projects"
             onClick={handleLinkClick}
-            className={`flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg`}
+            className={`flex items-center my-2 p-2 border-b-2 border-transparent transition-all duration-300 rounded-md ${location.pathname === '/projects' ? 'text-white font-bold border-white' : 'text-gray-300 hover:border-white hover:bg-gray-700'}`}
           >
             <FaFolderOpen className="mr-2" />
             Projects
           </Link>
-          {/* GitHub Link in Mobile Menu */}
+          <a
+            className="flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+            href="/images/hammad_ullah_cv.pdf" // Ensure the path is correct
+            onClick={handleLinkClick}
+            download="Hammad_Ullah_Resume.pdf" // Sets the filename for the download
+          >
+            <RxResume className="mr-2" />
+            Resume
+          </a>
           <Link
-            to="https://github.com/yourusername" // Update with your GitHub username
+            to="https://github.com/Hammadullahsheikh" // Update with your GitHub username
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleLinkClick}
-            className={`flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg`}
+            className="flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
           >
             <FaGithub className="mr-2" />
             GitHub

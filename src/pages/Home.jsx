@@ -45,9 +45,9 @@ const Profile = ({ imageSrc }) => {
                 </div>
 
                 {/* Second Div: Image Section */}
-                <div className="w-48 h-48 md:w-64 md:h-64 border-4 border-yellow-300 rounded-full overflow-hidden shadow-lg relative z-10">
+                <div className="w-48 h-48 md:w-64 md:h-64   overflow-hidden shadow-lg relative z-10">
                     <img 
-                        src={imageSrc || "/images/hammad1.png"} 
+                        src={imageSrc || "/images/home.webp"} 
                         alt="Profile of Hammad Ullah" 
                         className="w-full h-full object-cover" 
                     />
