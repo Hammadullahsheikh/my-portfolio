@@ -1,10 +1,22 @@
 import React from 'react';
+import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { PiInstagramLogoFill } from 'react-icons/pi';
 import { TypeAnimation } from 'react-type-animation';
 
 const Profile = ({ imageSrc }) => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+    };
+
     return (
         <>
             <div 
@@ -45,7 +57,7 @@ const Profile = ({ imageSrc }) => {
                 </div>
 
                 {/* Second Div: Image Section */}
-                <div className="w-48 h-48 md:w-64 md:h-64   overflow-hidden shadow-lg relative z-10">
+                <div className="w-48 h-48 md:w-64 md:h-64 overflow-hidden relative z-10">
                     <img 
                         src={imageSrc || "/images/home.webp"} 
                         alt="Profile of Hammad Ullah" 
@@ -53,67 +65,82 @@ const Profile = ({ imageSrc }) => {
                     />
                 </div>
             </div>
-             {/* introuce my self */}
             
-    <section className="bg-white dark:bg-gray-900">
-  <div className="relative flex">
-    <div className="min-h-screen lg:w-1/3"></div>
-    <div className="hidden w-3/4 min-h-screen bg-yellow-100 dark:bg-gray-800 lg:block"></div>
+            {/* Introduce Myself Section */}
+            <section className="bg-white dark:bg-gray-900">
+                <div className="relative flex">
+                    <div className="min-h-screen lg:w-1/3"></div>
+                    <div className="hidden w-3/4 min-h-screen bg-yellow-100 dark:bg-gray-800 lg:block"></div>
 
-    <div className="container flex flex-col justify-center w-full min-h-screen px-6 py-10 mx-auto lg:absolute lg:inset-x-0">
-      <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
-        Let me <span className="text-yellow-500">Introduce</span> <br /> My self
-      </h1>
+                    <div className="container flex flex-col justify-center w-full min-h-screen px-6 py-10 mx-auto lg:absolute lg:inset-x-0">
+                        <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
+                            Let me <span className="text-yellow-500">Introduce</span> <br /> Myself
+                        </h1>
 
-      <div className="mt-10 lg:mt-20 lg:flex lg:items-center">
-      <h1 className="flex items-center justify-center mt-[30px] bg-yellow-100 w-full lg:w-[32rem] rounded-lg h-96">
-  <img className="object-cover" src="/images/hammad3.png" alt="" />
-</h1>
+                        <div className="mt-10 lg:mt-20 lg:flex lg:items-center">
+                            <h1 className="flex items-center justify-center mt-[30px] bg-yellow-100 w-full lg:w-[32rem] rounded-lg h-96">
+                                <img className="object-cover" src="/images/hammad3.png" alt="" />
+                            </h1>
 
-        <div className="mt-8 lg:px-10 lg:mt-0 ">
-          <h1 className="text-2xl  font-medium text-yellow-600 dark:text-white lg:w-72">
-          Navigating the World of Programming
-          </h1>
+                            <div className="mt-8 lg:px-10 lg:mt-0 ">
+                                <h1 className="text-2xl font-medium text-yellow-600 dark:text-white lg:w-72">
+                                    Navigating the World of Programming
+                                </h1>
 
-          <p className="max-w-lg mt-6 text-gray-700 dark:text-gray-400">
-         I fell in love with programming and I have at least learnt something, I think… 🤷‍♂️ <br /><br />
+                                <p className="max-w-lg mt-6 text-gray-700 dark:text-gray-400">
+                                    I fell in love with programming and I have at least learnt something, I think… 🤷‍♂️ <br /><br />
+                                    I am fluent in classics like <b>Javascript, ReactJs and React Native.</b> <br /><br />
+                                    My field of interest includes building new Web Technologies and Products, and also areas related to Deep Learning and Natural Language Processing. <br /><br />
+                                    Whenever possible, I also apply my passion for developing products with Modern <b>Javascript</b> Libraries and Frameworks like <b>React.js</b>.
+                                </p>
+                            </div>
+                        </div>
 
-I am fluent in classics like <b>Javascript, ReactJs and React Native.</b> <br /><br />
+                        <div className="flex items-center justify-between mt-12 lg:justify-start">
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-My field of Interest's are building new  Web Technologies and Products and also in areas related to Deep <br />Learning and Natural Launguage Processing. <br /><br />
+            {/* Footer */}
+            <div className='text-center pt-20'>
+                <h1 className='text-4xl font-semibold'>FIND ME ON</h1>
+                <p className='text-2xl font-[2px] mt-3'>Feel free to connect with me</p>
+            </div>
+            <div className="flex justify-center gap-3 text-5xl mt-5 pb-10">
+                <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://github.com/Hammadullahsheikh"> 
+                    <FaGithub className="border p-3 bg-white rounded-full" />
+                </a>
+                <FaTwitter className="border p-3 bg-white rounded-full transition-transform duration-300 ease-in-out hover:scale-105" />
+                <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://www.linkedin.com/in/hammad-ullah-7a435a2a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                    <FaLinkedin className="border p-3 bg-white rounded-full" />
+                </a>
+                <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://www.instagram.com/itx_hammadullah/">
+                    <PiInstagramLogoFill className="border p-3 bg-white rounded-full" />
+                </a>
+                <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://mail.google.com/mail/u/0/#sent">
+                    <MdEmail className="border p-3 bg-white rounded-full" />
+                </a>
+            </div>
 
-Whenever possible, I also apply my passion for developing products with Modern <b>Javascript</b> Library and <br />Frameworks  like<b> React.js </b>
-          </p>
+            {/* Back to Top Button */}
+            {/* Back to Top Button */}
+<button 
+    onClick={scrollToTop} 
+    className="fixed bottom-20 right-10 p-3 bg-yellow-600 text-white rounded-full shadow-lg transition-transform duration-300 hover:bg-yellow-500 hover:scale-105 flex items-center justify-center"
+    style={{ zIndex: 1001 }} // Higher zIndex
+>
+    <AiOutlineArrowUp className="text-l" /> {/* Reduced size */}
+</button>
 
-          <h3 className="mt-6 text-lg font-medium text-yellow-500"></h3>
-          <p className="text-gray-600 dark:text-gray-300"></p>
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between mt-12 lg:justify-start">
-       
-
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* footer */}
-
-
-<div className='text-center pt-20'>
-      <h1 className='text-4xl font-semibold'>FIND ME ON</h1>
-      <p className='text-2xl font-[2px] mt-3'>Feel free to connect with me</p>
-    </div>
-    <div className="flex justify-center gap-3 text-5xl mt-5 pb-10">
- <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://github.com/Hammadullahsheikh"> <FaGithub className="border p-3 bg-white rounded-full" /></a>
-  <FaTwitter className="border p-3 bg-white rounded-full transition-transform duration-300 ease-in-out hover:scale-105" />
-  <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://www.linkedin.com/in/hammad-ullah-7a435a2a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "><FaLinkedin className="border p-3 bg-white rounded-full" /></a>
-  <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://www.instagram.com/itx_hammadullah/"><PiInstagramLogoFill className="border p-3 bg-white rounded-full" /></a>
-  <a className='transition-transform duration-300 ease-in-out hover:scale-105' href="https://mail.google.com/mail/u/0/#sent"><MdEmail className="border p-3 bg-white rounded-full" /></a>
-</div>
-
+{/* Scroll to Bottom Button */}
+<button 
+    onClick={scrollToBottom} 
+    className="fixed bottom-10 right-10 p-3 bg-yellow-600 text-white rounded-full shadow-lg transition-transform duration-300 hover:bg-yellow-500 hover:scale-105 flex items-center justify-center"
+    style={{ zIndex: 1000 }} // Lower zIndex
+>
+    <AiOutlineArrowDown className="text-l" /> {/* Reduced size */}
+</button>
         </>
     );
 };
