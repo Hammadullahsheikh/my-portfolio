@@ -55,9 +55,9 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link
           to="/"
-          className="text-2xl font-bold text-yellow-400 transition-all duration-300 hover:scale-110"
+          className="text-3xl font-bold text-yellow-400 transition-all duration-300 "
         >
-          Hammad Ullah
+          Hammad Ullah...
         </Link>
 
         <div className="flex lg:hidden ml-auto">
@@ -99,7 +99,9 @@ const Navbar = () => {
             <FaGithub className="mr-2" />
             GitHub
           </Link>
+          
         </div>
+        
       </div>
 
       {isOpen && (

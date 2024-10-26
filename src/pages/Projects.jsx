@@ -1,78 +1,131 @@
-import React, { useState } from 'react';
+import React from 'react'
 
 const Projects = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const projects = [
-    {
-      title: 'Project One',
-      description: 'A web application to track tasks efficiently.',
-      link: 'https://example.com/project-one',
-      image: 'https://via.placeholder.com/200', // Replace with your project image
-    },
-    {
-      title: 'Project Two',
-      description: 'An e-commerce platform built with React and Node.js.',
-      link: 'https://example.com/project-two',
-      image: 'https://via.placeholder.com/200',
-    },
-    {
-      title: 'Project Three',
-      description: 'A personal blog sharing thoughts on web development.',
-      link: 'https://example.com/project-three',
-      image: 'https://via.placeholder.com/200',
-    },
-    {
-      title: 'Project Four',
-      description: 'A weather app providing real-time updates using an API.',
-      link: 'https://example.com/project-four',
-      image: 'https://via.placeholder.com/200',
-    },
-    {
-      title: 'Project Five',
-      description: 'A task management tool for teams to collaborate effectively.',
-      link: 'https://example.com/project-five',
-      image: 'https://via.placeholder.com/200',
-    },
-    {
-      title: 'Project Six',
-      description: 'A portfolio website to showcase projects and skills.',
-      link: 'https://example.com/project-six',
-      image: 'https://via.placeholder.com/200',
-    },
-  ];
-
-  const handleCardClick = (index) => {
-    setActiveIndex(index === activeIndex ? null : index);
-  };
-
   return (
-    <div className="min-h-screen mt-20 bg-gray-100 flex items-center justify-center p-6">
-      <div className="max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <h1 className="col-span-full text-4xl font-bold text-yellow-500 mb-6 text-center">My Projects</h1>
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            onClick={() => handleCardClick(index)}
-            className={`bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 
-              transform hover:scale-105 hover:bg-yellow-100 
-              ${activeIndex === index ? 'shadow-lg shadow-yellow-700' : 'shadow-md'}
-              hover:shadow-xl hover:shadow-yellow-600`}
-          >
-            <img src={project.image} alt={project.title} className="w-full h-36 object-cover" />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold text-yellow-500 mb-1">
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                  {project.title}
-                </a>
-              </h2>
-              <p className="text-sm text-gray-700">{project.description}</p>
-            </div>
-          </div>
-        ))}
+    <>
+    <div className='mt-20 p-10'>
+      <div className=''>
+      <div className=' text-center text-5xl p-10 text-yellow-400 font-semibold '>My Projects</div>
+      <div className='flex justify-center gap-10 mt-10 flex-wrap'>
+      <div className="card bg-base-100 w-96  shadow-xl">
+  <figure>
+    <img
+      src="./images/meme-generator.png"
+      alt="Shoes" /> 
+  </figure>
+  <div className="card-body">
+    <h2 className="card-title">
+    Meme Generator!
+     
+    </h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <a href="https://meme-generator-ruddy-tau.vercel.app/"><div className="badge badge-outline">view web</div></a>
+      <a href="https://github.com/Hammadullahsheikh/meme-generator "><div className="badge badge-outline">view code</div></a>
+    </div>
+  </div>
+</div><div className="card bg-base-100 w-96 shadow-xl">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div className="card-body">
+    <h2 className="card-title">
+      Shoes!
+      <div className="badge badge-secondary">NEW</div>
+    </h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <div className="badge badge-outline">Fashion</div>
+      <div className="badge badge-outline">Products</div>
+    </div>
+  </div>
+</div><div className="card bg-base-100 w-96 shadow-xl">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div className="card-body">
+    <h2 className="card-title">
+      Shoes!
+      <div className="badge badge-secondary">NEW</div>
+    </h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <div className="badge badge-outline">Fashion</div>
+      <div className="badge badge-outline">Products</div>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+
+
+
+      <div className='flex justify-center flex-wrap gap-10 mt-10'>
+      <div className="card bg-base-100 w-96 shadow-xl">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" /> 
+  </figure>
+  <div className="card-body">
+    <h2 className="card-title">
+      Shoes!
+      <div className="badge badge-secondary">NEW</div>
+    </h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <div className="badge badge-outline">Fashion</div>
+      <div className="badge badge-outline">Products</div>
+    </div>
+  </div>
+</div><div className="card bg-base-100 w-96 shadow-xl">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div className="card-body">
+    <h2 className="card-title">
+      Shoes!
+      <div className="badge badge-secondary">NEW</div>
+    </h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <div className="badge badge-outline">Fashion</div>
+      <div className="badge badge-outline">Products</div>
+    </div>
+  </div>
+</div><div className="card bg-base-100 w-96 shadow-xl">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div className="card-body">
+    <h2 className="card-title">
+      Shoes!
+      <div className="badge badge-secondary">NEW</div>
+    </h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <div className="badge badge-outline">Fashion</div>
+      <div className="badge badge-outline">Products</div>
+    </div>
+  </div>
+</div>
+
+
+      </div>
       </div>
     </div>
-  );
-};
+    
+    </>
+  )
+}
 
-export default Projects;
+export default Projects

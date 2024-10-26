@@ -10,13 +10,7 @@ const Profile = ({ imageSrc }) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const scrollToBottom = () => {
-        window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
-    };
-
+    
     return (
         <>
             <div 
@@ -57,7 +51,7 @@ const Profile = ({ imageSrc }) => {
                 </div>
 
                 {/* Second Div: Image Section */}
-                <div className="w-48 h-48 md:w-64 md:h-64 overflow-hidden relative z-10">
+                <div className="w-48 h-49 md:w-65 md:h-65 overflow-hidden relative z-10">
                     <img 
                         src={imageSrc || "/images/home.webp"} 
                         alt="Profile of Hammad Ullah" 
@@ -124,23 +118,16 @@ const Profile = ({ imageSrc }) => {
             </div>
 
             {/* Back to Top Button */}
-            {/* Back to Top Button */}
+            
 <button 
     onClick={scrollToTop} 
-    className="fixed bottom-20 right-10 p-3 bg-yellow-600 text-white rounded-full shadow-lg transition-transform duration-300 hover:bg-yellow-500 hover:scale-105 flex items-center justify-center"
-    style={{ zIndex: 1001 }} // Higher zIndex
+    className="fixed bottom-10 right-10 p-3 bg-yellow-600 text-white rounded-full shadow-lg transition-transform duration-300 hover:bg-yellow-500 hover:scale-105 flex items-center justify-center"
+    style={{ zIndex: 1001 }} 
 >
-    <AiOutlineArrowUp className="text-l" /> {/* Reduced size */}
+    <AiOutlineArrowUp className="text-l" /> 
 </button>
 
-{/* Scroll to Bottom Button */}
-<button 
-    onClick={scrollToBottom} 
-    className="fixed bottom-10 right-10 p-3 bg-yellow-600 text-white rounded-full shadow-lg transition-transform duration-300 hover:bg-yellow-500 hover:scale-105 flex items-center justify-center"
-    style={{ zIndex: 1000 }} // Lower zIndex
->
-    <AiOutlineArrowDown className="text-l" /> {/* Reduced size */}
-</button>
+
         </>
     );
 };
