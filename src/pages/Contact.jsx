@@ -1,74 +1,77 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 
-const Contact = () => {
+const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
 
+  // Handle form data change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+
+    // Send email using EmailJS
+    emailjs.send(
+      'service_39aq585',  // Your EmailJS Service ID
+      'template_vlkjby3',  // Your EmailJS Template ID
+      formData,            // The form data (name, email, message)
+      'Eb35rbZUIbX_tU4Hk'  // Your EmailJS User ID
+    )
+    .then((result) => {
+      console.log('Email sent successfully:', result.text);
+    }, (error) => {
+      console.log('Error sending email:', error.text);
+    });
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-bold text-yellow-500 mb-4 text-center">Contact Me</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-gray-700 mb-1" htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-300"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 mb-1" htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-300"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 mb-1" htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows="4"
-              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-300"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600 transition duration-300"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
+    <div className="contact-form mt-30">
+      <h1 className='m-10'>Contact Me</h1>
+      <form className='mt-10' onSubmit={handleSubmit}>
+        <div >
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="message">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
   );
 };
 
-export default Contact;
+export default ContactForm;

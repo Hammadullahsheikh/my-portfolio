@@ -1,47 +1,81 @@
 import React from 'react';
 
 const Experience = () => {
-  const experiences = [
+  const projects = [
     {
-      jobTitle: 'Frontend Developer',
-      company: 'Tech Solutions',
-      duration: 'June 2021 - Present',
-      description: 'Developing user-friendly web applications with a focus on responsive design and performance.',
+      projectTitle: 'Meme Generator',
+      role: 'Frontend Developer',
+      duration: 'April 2023 - Present',
+      description: 'Created a responsive meme generator app with React, allowing users to generate custom memes by adding text to images.',
+      techStack: 'React, CSS, JavaScript',
+      link: 'https://meme-generator-ruddy-tau.vercel.app/',
     },
     {
-      jobTitle: 'Web Developer Intern',
-      company: 'Creative Agency',
-      duration: 'January 2021 - May 2021',
-      description: 'Assisted in the development of client websites and collaborated with designers to improve user experience.',
+      projectTitle: 'React Ecommerce',
+      role: 'Full-Stack Developer',
+      duration: 'February 2023 - March 2023',
+      description: 'Developed an ecommerce website with a fully functional shopping cart, product filtering, and user authentication.',
+      techStack: 'React, Node.js, MongoDB, Express',
+      link: 'https://react-ecommerce-snowy-two.vercel.app/',
     },
     {
-      jobTitle: 'Software Engineer Intern',
-      company: 'Innovatech',
-      duration: 'June 2020 - August 2020',
-      description: 'Worked on backend services using Node.js and contributed to various features of the company’s product.',
+      projectTitle: 'Blogging App',
+      role: 'Frontend Developer',
+      duration: 'January 2023 - February 2023',
+      description: 'Built a blogging platform where users can write, edit, and manage blog posts. Focused on responsive design and seamless user experience.',
+      techStack: 'React, CSS, Firebase',
+      link: 'https://blogging-app-beryl.vercel.app',
     },
     {
-      jobTitle: 'Junior Developer',
-      company: 'StartUp Inc.',
-      duration: 'September 2019 - December 2019',
-      description: 'Supported the development team in building applications and maintaining existing projects.',
+      projectTitle: 'Stopwatch App',
+      role: 'Solo Developer',
+      duration: 'December 2022',
+      description: 'Developed a simple stopwatch app that tracks time intervals with start, stop, and reset functionality.',
+      techStack: 'JavaScript, CSS',
+      link: 'https://hammadullahsheikh.github.io/stopWatch/',
+    },
+    {
+      projectTitle: 'Salt n Pepper Clone',
+      role: 'Frontend Developer',
+      duration: 'November 2022',
+      description: 'Built a responsive clone of the Salt n Pepper website, focusing on layout and CSS styling to match the original design.',
+      techStack: 'HTML, CSS, JavaScript',
+      link: 'https://hammadullahsheikh.github.io/s-n-p-responsive/',
+    },
+    {
+      projectTitle: 'PrizeOye Clone',
+      role: 'Frontend Developer',
+      duration: 'October 2022',
+      description: 'Developed a clone of PrizeOye’s website with responsive design and interactive features using HTML, CSS, and JavaScript.',
+      techStack: 'HTML, CSS, JavaScript',
+      link: 'https://hammadullahsheikh.github.io/price0ye.pk/',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="max-w-6xl w-full bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-bold text-yellow-500 mb-6 text-center">My Experience</h1>
-        <div className="space-y-4">
-          {experiences.map((experience, index) => (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center mt-10 p-6">
+      <div className="max-w-6xl w-full bg-white rounded-lg mt-10 shadow-lg p-8">
+        <h1 className="text-4xl font-bold text-yellow-500 mb-6 text-center">My Project Experience</h1>
+
+        <div className="space-y-6">
+          {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-4 rounded-lg shadow-md hover:shadow-lg transform transition-transform duration-300"
+              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105"
             >
-              <h2 className="text-xl font-semibold text-yellow-500">{experience.jobTitle}</h2>
-              <h3 className="text-gray-600">{experience.company}</h3>
-              <p className="text-gray-500">{experience.duration}</p>
-              <p className="text-gray-700">{experience.description}</p>
+              <h2 className="text-2xl font-semibold text-yellow-600">{project.projectTitle}</h2>
+              <h3 className="text-xl text-gray-600">{project.role}</h3>
+              <p className="text-sm text-gray-500 mt-1">{project.duration}</p>
+              <p className="text-base text-gray-700 mt-3">{project.description}</p>
+              <p className="text-sm text-gray-500 mt-3">Tech Stack: <span className="font-semibold">{project.techStack}</span></p>
+              <a
+                href={project.link}
+                className="text-yellow-500 mt-4 block hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Live Project
+              </a>
             </div>
           ))}
         </div>
