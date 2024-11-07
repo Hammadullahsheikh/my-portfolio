@@ -14,13 +14,13 @@ const Profile = ({ imageSrc }) => {
     <>
       {/* Hero Section */}
       <div
-        className="flex flex-col md:flex-row items-center justify-center min-h-screen p-6 gap-6 sm:gap-8 relative bg-cover bg-center"
+        className="flex flex-col  md:flex-row items-center justify-center min-h-screen p-6 gap-6 sm:gap-8 relative bg-cover bg-center"
         style={{
           backgroundImage: 'url("/path/to/your/background-image.jpg")', // Update this path
         }}
       >
         {/* Text Section */}
-        <div className="text-center md:text-left relative z-10 sm:mb-8">
+        <div className="text-center md:text-left relative z-10 sm:mb-8 ">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-yellow-600 drop-shadow-md transition-transform duration-300 hover:scale-105">
             Hi There! 👋🏻
           </h1>

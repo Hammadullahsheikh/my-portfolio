@@ -55,8 +55,8 @@ const Experience = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center mt-10 p-6">
       <div className="max-w-6xl w-full bg-white rounded-lg mt-10 shadow-lg p-8">
-        <h1 className="text-4xl font-bold text-yellow-500 mb-6 text-center">My Project Experience</h1>
-
+        
+        <h2 className="text-4xl  sm:text-5xl text-center font-extrabold mt-[80px] text-yellow-600 mb-10">My Project Experience</h2>
         <div className="space-y-6">
           {projects.map((project, index) => (
             <div
