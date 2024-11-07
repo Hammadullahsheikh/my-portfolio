@@ -58,6 +58,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 fixed top-0 left-0 w-full shadow-lg z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
+        {/* Clicking on this will navigate to the home page */}
         <Link
           to="/"
           className="text-3xl font-bold text-yellow-400 transition-all duration-300"
