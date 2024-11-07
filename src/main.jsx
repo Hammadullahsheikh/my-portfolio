@@ -6,8 +6,9 @@ import Layout from './Layout';
 import About from './pages/About';
 import Projects from './pages/Projects.jsx';
 import Experience from './pages/Experience.jsx';
-import Contact from './pages/Contact.jsx';
+
 import Home from './pages/Home.jsx';
+import Contact from './pages/Contact.jsx';
 
 
 
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
             {
                 path: 'contact',
                 element: <Contact />
-            }
+            },
         ]
     }
 ]);
