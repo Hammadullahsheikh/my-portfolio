@@ -70,39 +70,40 @@ const Projects = () => {
   ];
 
   return (
-    <div className='mt-10 p-10'>
-      
-      <h2 className="text-4xl  sm:text-5xl text-center font-extrabold mt-[80px] text-yellow-600 mb-10">My Projects</h2>
-      <div className='flex justify-center gap-10 mt-10 flex-wrap'>
+    <div className='mt-10 p-5 sm:p-10'>
+      <h2 className="text-4xl sm:text-5xl text-center font-extrabold mt-10 text-yellow-600 mb-10">My Projects</h2>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>
         {projects.map((project, index) => (
           <div
             key={index}
-            className="card bg-base-100 w-96 shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl rounded-lg overflow-hidden mb-10"
+            className="card bg-gray-100 w-full max-w-xs shadow-lg transform transition-transform hover:scale-105 rounded-lg overflow-hidden"
           >
             <figure className="overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
-                className="object-cover w-full h-48 transition-transform duration-300 transform hover:scale-110"
+                className="object-cover w-full h-40 sm:h-48 transition-transform duration-300 transform hover:scale-110"
               />
             </figure>
             <div className="card-body p-4">
-              <h2 className="card-title text-2xl font-semibold text-gray-800">
-                {project.title}
-              </h2>
-              <p className="text-gray-600">{project.description}</p>
-              <div className="card-actions justify-between mt-6">
+              <h2 className="card-title text-xl font-semibold text-white">{project.title}</h2>
+              <p className="text-gray-400 text-sm">{project.description}</p>
+              <div className="card-actions justify-between mt-4">
                 <a
                   href={project.liveLink}
-                  className="btn btn-outline btn-yellow-500 px-5 py-2 text-lg font-semibold rounded-lg transform transition duration-200 hover:bg-yellow-400 hover:text-white hover:scale-105"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-800 bg-yellow-400 rounded-md transition-transform duration-200 transform hover:bg-yellow-500 hover:scale-105"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <FontAwesomeIcon icon={faEye} className="mr-2" /> View Web
+                  <FontAwesomeIcon icon={faEye} /> View
                 </a>
                 <a
                   href={project.codeLink}
-                  className="btn btn-outline btn-yellow-500 px-5 py-2 text-lg font-semibold rounded-lg transform transition duration-200 hover:bg-yellow-400 hover:text-white hover:scale-105"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-800 bg-yellow-400 rounded-md transition-transform duration-200 transform hover:bg-yellow-500 hover:scale-105"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <FontAwesomeIcon icon={faCodeBranch} className="mr-2" /> GitHub
+                  <FontAwesomeIcon icon={faCodeBranch} /> Code
                 </a>
               </div>
             </div>

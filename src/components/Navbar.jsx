@@ -45,8 +45,8 @@ const Navbar = () => {
         to={path}
         onClick={handleLinkClick}
         className={clsx(
-          'flex items-center my-2 p-2 border-b-2 border-transparent transition-all duration-300 rounded-md',
-          location.pathname === path ? 'text-white font-bold border-white' : 'text-gray-300 hover:border-white hover:bg-gray-700'
+          'flex items-center my-2 p-2 rounded-md transition-all duration-300 transform hover:scale-105',
+          location.pathname === path ? 'text-yellow-500 font-semibold' : 'text-gray-300 hover:text-white hover:bg-gray-700'
         )}
       >
         <span className="mr-2">{icon}</span>
@@ -58,12 +58,12 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 fixed top-0 left-0 w-full shadow-lg z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
-        {/* Clicking on this will navigate to the home page */}
+        {/* Logo and Home Link */}
         <Link
           to="/"
-          className="text-3xl font-bold text-yellow-400 transition-all duration-300"
+          className="text-3xl font-bold text-yellow-400 transition-all duration-300 hover:text-yellow-500"
         >
-          Hammad Ullah...
+          Hammad Ullah
         </Link>
 
         {/* Mobile Menu Button */}
@@ -74,26 +74,26 @@ const Navbar = () => {
             aria-expanded={isOpen}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
-            {isOpen ? <FaTimes /> : <FaBars />}
+            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
 
         {/* Desktop Menu Links */}
-        <div className="hidden lg:flex space-x-4 ml-auto">
+        <div className="hidden lg:flex space-x-6 ml-auto">
           {renderLinks()}
           <Link
             to="/projects"
             onClick={handleLinkClick}
             className={clsx(
-              'flex items-center my-2 p-2 border-b-2 border-transparent transition-all duration-300 rounded-md',
-              location.pathname === '/projects' ? 'text-white font-bold border-white' : 'text-gray-300 hover:border-white hover:bg-gray-700'
+              'flex items-center p-2 rounded-md transition-all duration-300 transform hover:scale-105',
+              location.pathname === '/projects' ? 'text-yellow-500 font-semibold' : 'text-gray-300 hover:text-white hover:bg-gray-700'
             )}
           >
             <FaFolderOpen className="mr-2" />
             Projects
           </Link>
           <a
-            className="flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+            className="flex items-center p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
             href="/images/hammad_ullah_cv.pdf"
             onClick={handleLinkClick}
             download="Hammad_Ullah_Resume.pdf"
@@ -106,7 +106,7 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleLinkClick}
-            className="flex items-center my-2 p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
+            className="flex items-center p-2 bg-yellow-500 text-white rounded-md transition-all duration-300 hover:bg-yellow-600 hover:shadow-lg"
           >
             <FaGithub className="mr-2" />
             GitHub
@@ -118,15 +118,15 @@ const Navbar = () => {
       {isOpen && (
         <div
           ref={menuRef}
-          className="flex flex-col items-center lg:hidden bg-gray-800 transition-all duration-300 ease-in-out"
+          className="flex flex-col items-center lg:hidden bg-gray-800 shadow-md py-4 transition-all duration-300 ease-in-out"
         >
           {renderLinks()}
           <Link
             to="/projects"
             onClick={handleLinkClick}
             className={clsx(
-              'flex items-center my-2 p-2 border-b-2 border-transparent transition-all duration-300 rounded-md',
-              location.pathname === '/projects' ? 'text-white font-bold border-white' : 'text-gray-300 hover:border-white hover:bg-gray-700'
+              'flex items-center my-2 p-2 rounded-md transition-all duration-300 hover:scale-105',
+              location.pathname === '/projects' ? 'text-yellow-500 font-semibold' : 'text-gray-300 hover:text-white hover:bg-gray-700'
             )}
           >
             <FaFolderOpen className="mr-2" />
