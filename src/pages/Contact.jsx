@@ -29,36 +29,36 @@ const App = () => {
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="bg-yellow-300 dark:bg-yellow-900 shadow-2xl rounded-3xl p-8 w-full sm:w-5/6 lg:w-1/2 max-w-2xl transform transition-all duration-300 ease-in-out"
+        className="bg-yellow-200 dark:bg-yellow-700 shadow-2xl rounded-3xl p-8 w-full sm:w-5/6 lg:w-1/2 max-w-2xl transform transition-all duration-300 ease-in-out"
       >
         {/* Name Field */}
         <div className="mb-6">
-          <label className="block text-gray-700 text-lg font-semibold mb-2">Name</label>
+          <label className="block text-gray-900 text-lg font-semibold mb-2">Name</label>
           <input
             type="text"
             name="hammad_ullah"
-            className="shadow-lg border  rounded-full w-full py-3 px-6 text-gray-700 focus:ring-2 focus:ring-yellow-500 transition duration-300 ease-in-out"
+            className="shadow-lg border  rounded-full w-full py-3 px-6 text-gray-800 focus:ring-2 focus:ring-yellow-500 transition duration-300 ease-in-out"
             required
           />
         </div>
 
         {/* Email Field */}
         <div className="mb-6">
-          <label className="block text-gray-700 text-lg font-semibold mb-2">Email</label>
+          <label className="block text-gray-900 text-lg font-semibold mb-2">Email</label>
           <input
             type="email"
             name="from_email"
-            className="shadow-lg border rounded-full w-full py-3 px-6 text-gray-700 focus:ring-2 focus:ring-yellow-500 transition duration-300 ease-in-out"
+            className="shadow-lg border rounded-full w-full py-3 px-6 text-gray-800 focus:ring-2 focus:ring-yellow-500 transition duration-300 ease-in-out"
             required
           />
         </div>
 
         {/* Message Field */}
         <div className="mb-6">
-          <label className="block text-gray-700 text-lg font-semibold mb-2">Message</label>
+          <label className="block text-gray-800 text-lg font-semibold mb-2">Message</label>
           <textarea
             name="message"
-            className="shadow-lg border rounded-xl w-full py-3 px-6 text-gray-700 focus:ring-2 focus:ring-yellow-500 transition duration-300 ease-in-out"
+            className="shadow-lg border rounded-xl w-full py-3 px-6 text-gray-800 focus:ring-2 focus:ring-yellow-500 transition duration-300 ease-in-out"
             rows="5"
             required
           ></textarea>
