@@ -52,10 +52,10 @@ const About = ({ imageSrc }) => {
           variants={scaleUp}
         >
           <img 
-            src={imageSrc || '/images/hammadphoto.png'}
-            alt="Profile of Hammad Ullah"
-            className="w-full h-full "
-          />
+  src={imageSrc || '/images/hamad1.png.jpg'}
+  alt="Profile of Hammad Ullah"
+  className="w-full h-full object-cover border-2 rounded-sm aspect-auto"
+/>
         </motion.div>
       </motion.div>
 
